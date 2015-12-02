@@ -4,34 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-
-
-
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Origen"
+                android:id="@+id/textViewFrom"
+                android:layout_weight="1"
+                android:layout_gravity="center_" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView"
+                android:text="Destino"
+                android:id="@+id/textViewTo"
                 android:layout_weight="1"
-                android:layout_gravity="center_horizontal" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="New Text 2"
-                android:id="@+id/textView2"
-                android:layout_weight="1"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 

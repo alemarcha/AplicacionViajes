@@ -1,19 +1,28 @@
 package viajes.app.alemarcha.android.beyond.es.aplicacionviajes.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.R;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
 
 /**
  * Created by alemarcha26 on 30/11/15.
  */
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
+    private List<Trip> listTrips;
 
+    public TripAdapter(List<Trip> listTrips) {
+        this.listTrips = listTrips;
+    }
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
      * an item.
@@ -36,6 +45,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
      */
     @Override
     public TripViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //Es el método que se utiliza cuando se crea por primera vez el holder
         View tripHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.trip_element, parent, false);
         return new TripViewHolder(tripHolder);
     }
@@ -62,7 +72,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
      */
     @Override
     public void onBindViewHolder(TripViewHolder holder, int position) {
-        
+        // Es el que se utiliza para rellenar el holder
+        holder.setFrom(listTrips.get(position).getFrom());
+        holder.setTo(listTrips.get(position).getTo());
     }
 
     /**
@@ -72,6 +84,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return listTrips.size();
     }
 }

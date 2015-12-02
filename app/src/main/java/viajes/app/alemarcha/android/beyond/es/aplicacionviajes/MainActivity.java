@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.LinkedList;
+import java.util.List;
+
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.adapter.TripAdapter;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,14 +29,17 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         recyclerViewLista = (RecyclerView) findViewById(R.id.my_recycler_view);
-        List<Product> lst = new LinkedList<>();
-        for (int i = 0; i < 10; i++) {
-            Product p = new Product();
-            p.setText1("hola" + i);
-            p.setText2("hola2" + i);
+        List<Trip> lst = new LinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            Trip p = new Trip();
+            p.setFrom("Seville" + i);
+            p.setTo("Madrid" + i);
             lst.add(p);
-
         }
+
+        recyclerViewLista.setAdapter(new TripAdapter(lst));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewLista.setLayoutManager(layoutManager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
