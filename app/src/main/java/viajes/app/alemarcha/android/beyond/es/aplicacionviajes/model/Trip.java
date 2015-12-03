@@ -6,9 +6,10 @@ package viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model;
 public class Trip {
     private String from;
     private String to;
+    private String countryTo;
+    private String countryFrom;
     private String checkOut;
     private String arrivalTime;
-
 
     public Trip() {
     }
@@ -41,7 +42,24 @@ public class Trip {
         return arrivalTime;
     }
 
+    public String getCountryTo() {
+        return countryTo;
+    }
+
+    public void setCountryTo(String countryTo) {
+        this.countryTo = countryTo;
+    }
+
+    public String getCountryFrom() {
+        return countryFrom;
+    }
+
+    public void setCountryFrom(String countryFrom) {
+        this.countryFrom = countryFrom;
+    }
+
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
+
 }

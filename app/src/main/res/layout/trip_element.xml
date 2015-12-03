@@ -34,12 +34,15 @@
                     android:gravity="center"
                     android:text="Origen" />
 
-                <TextClock
+                <TextView
+                    android:id="@+id/priceEstimated"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textClockFrom"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_weight="1" />
+                    android:text="220 €"
+                    android:textColor="@color/colorPrice"
+                    />
 
             </LinearLayout>
 
@@ -57,12 +60,14 @@
                     android:gravity="center"
                     android:text="Destino" />
 
-                <TextClock
+                <TextView
+                    android:id="@+id/timeEstimated"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textClockTo"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_weight="1" />
+                    android:text="2h 20 min"
+                     />
             </LinearLayout>
         </LinearLayout>
 

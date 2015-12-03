@@ -73,8 +73,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
     @Override
     public void onBindViewHolder(TripViewHolder holder, int position) {
         // Es el que se utiliza para rellenar el holder
-        holder.setFrom(listTrips.get(position).getFrom());
-        holder.setTo(listTrips.get(position).getTo());
+        Trip tripActual=listTrips.get(position);
+        holder.setFrom(tripActual.getFrom(), tripActual.getCountryFrom());
+        holder.setTo(tripActual.getTo(), tripActual.getCountryTo());
     }
 
     /**

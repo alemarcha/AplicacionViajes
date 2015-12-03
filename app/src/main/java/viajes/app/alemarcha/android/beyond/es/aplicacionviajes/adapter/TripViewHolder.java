@@ -20,12 +20,13 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         to= (TextView) itemView.findViewById(R.id.textViewTo);
     }
 
-    public void setFrom(String from) {
-        this.from.setText(from);
+    public void setFrom(String from, String countryFrom) {
+        this.from.setText(from+"("+countryFrom+")");
     }
 
-    public void setTo(String to) {
-        this.to.setText(to);
+    public void setTo(String to, String countryTo) {
+
+        this.to.setText(to+"("+countryTo+")");
     }
 
 }

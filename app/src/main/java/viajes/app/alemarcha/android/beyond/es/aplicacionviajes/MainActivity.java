@@ -16,6 +16,7 @@ import java.util.List;
 
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.adapter.TripAdapter;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.rest.ConexionApiRest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,13 +34,18 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             Trip p = new Trip();
             p.setFrom("Seville" + i);
+            p.setCountryFrom("Spain" + i);
             p.setTo("Madrid" + i);
+            p.setCountryTo("Spain" + i);
             lst.add(p);
         }
 
         recyclerViewLista.setAdapter(new TripAdapter(lst));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewLista.setLayoutManager(layoutManager);
+
+        ConexionApiRest conexionApiRest = new ConexionApiRest("http://free.rome2rio.com/api/1.2/json/Search?key=vsarCcct&languageCode=ES&flags=0x100FFFF0");
+    conexionApiRest.execute();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
