@@ -76,6 +76,10 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
         Trip tripActual=listTrips.get(position);
         holder.setFrom(tripActual.getFrom(), tripActual.getCountryFrom());
         holder.setTo(tripActual.getTo(), tripActual.getCountryTo());
+        holder.setPrice(tripActual.getPrice());
+        holder.setDuration(tripActual.getDuration());
+        holder.setDistance(tripActual.getDistance());
+        holder.setVehicle(tripActual.getVehicle());
     }
 
     /**

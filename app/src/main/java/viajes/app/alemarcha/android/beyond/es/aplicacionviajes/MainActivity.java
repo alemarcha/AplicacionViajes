@@ -31,21 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewLista = (RecyclerView) findViewById(R.id.my_recycler_view);
         List<Trip> lst = new LinkedList<>();
-        for (int i = 0; i < 100; i++) {
-            Trip p = new Trip();
-            p.setFrom("Seville" + i);
-            p.setCountryFrom("Spain" + i);
-            p.setTo("Madrid" + i);
-            p.setCountryTo("Spain" + i);
-            lst.add(p);
-        }
+
 
         recyclerViewLista.setAdapter(new TripAdapter(lst));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewLista.setLayoutManager(layoutManager);
 
-        ConexionApiRest conexionApiRest = new ConexionApiRest("http://free.rome2rio.com/api/1.2/json/Search?key=vsarCcct&languageCode=ES&flags=0x100FFFF0");
-    conexionApiRest.execute();
+        ConexionApiRest conexionApiRest = new ConexionApiRest("http://free.rome2rio.com/api/1.2/json/Search?key=vsarCcct&oName=Sevilla&dName=Madrid&languageCode=ES", recyclerViewLista);
+        conexionApiRest.execute();
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

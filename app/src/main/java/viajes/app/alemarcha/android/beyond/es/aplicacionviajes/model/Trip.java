@@ -8,8 +8,10 @@ public class Trip {
     private String to;
     private String countryTo;
     private String countryFrom;
-    private String checkOut;
-    private String arrivalTime;
+    private String price;
+    private String duration;
+    private String distance;
+    private String vehicle;
 
     public Trip() {
     }
@@ -22,13 +24,7 @@ public class Trip {
         this.from = from;
     }
 
-    public String getCheckOut() {
-        return checkOut;
-    }
 
-    public void setCheckOut(String checkOut) {
-        this.checkOut = checkOut;
-    }
 
     public String getTo() {
         return to;
@@ -38,8 +34,21 @@ public class Trip {
         this.to = to;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     public String getCountryTo() {
@@ -58,8 +67,19 @@ public class Trip {
         this.countryFrom = countryFrom;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public String getDistance() {
+        return distance;
     }
 
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
+    }
 }
