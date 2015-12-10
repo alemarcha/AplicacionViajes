@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +21,11 @@ import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
 public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
     private List<Trip> listTrips;
+    private RecyclerView recyclerViewLista;
 
-    public TripAdapter(List<Trip> listTrips) {
+    public TripAdapter(List<Trip> listTrips, RecyclerView recyclerViewLista) {
         this.listTrips = listTrips;
+        this.recyclerViewLista=recyclerViewLista;
     }
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
@@ -47,6 +51,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
     public TripViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Es el método que se utiliza cuando se crea por primera vez el holder
         View tripHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.trip_element, parent, false);
+
         return new TripViewHolder(tripHolder);
     }
 
@@ -80,6 +85,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
         holder.setDuration(tripActual.getDuration());
         holder.setDistance(tripActual.getDistance());
         holder.setVehicle(tripActual.getVehicle());
+        holder.setClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Toast.makeText(view.getContext(), "#" + position + " - " + listTrips.get(position).getPrice() + " (Long click)", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**

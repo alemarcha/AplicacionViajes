@@ -134,7 +134,7 @@ public class ConexionApiRest extends AsyncTask<Void, Void, TripDTO> {
 
             trips.add(t);
         }
-        TripAdapter adapter=new TripAdapter(trips);
+        TripAdapter adapter=new TripAdapter(trips,recyclerViewLista);
         recyclerViewLista.setAdapter(adapter);
     }
 }

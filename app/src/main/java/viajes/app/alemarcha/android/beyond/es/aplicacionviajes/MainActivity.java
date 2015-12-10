@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
         List<Trip> lst = new LinkedList<>();
 
 
-        recyclerViewLista.setAdapter(new TripAdapter(lst));
+        recyclerViewLista.setAdapter(new TripAdapter(lst,recyclerViewLista));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerViewLista.setLayoutManager(layoutManager);
 
-        ConexionApiRest conexionApiRest = new ConexionApiRest("http://free.rome2rio.com/api/1.2/json/Search?key=vsarCcct&oName=Sevilla&dName=Madrid&languageCode=ES", recyclerViewLista);
+
+        ConexionApiRest conexionApiRest = new ConexionApiRest("http://free.rome2rio.com/api/1.2/json/Search?key=vsarCcct&oName=London&dName=Madrid&languageCode=ES", recyclerViewLista);
         conexionApiRest.execute();
 
 
@@ -73,4 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

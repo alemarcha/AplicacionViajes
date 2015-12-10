@@ -9,13 +9,14 @@ import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.R;
 /**
  * Created by alemarcha26 on 30/11/15.
  */
-public class TripViewHolder extends RecyclerView.ViewHolder {
+public class TripViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private TextView from;
     private TextView to;
     private TextView duration;
     private TextView price;
     private TextView distance;
     private TextView vehicle;
+    private ItemClickListener clickListener;
 
     public TripViewHolder(View itemView) {
         super(itemView);
@@ -25,6 +26,9 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         price=(TextView) itemView.findViewById(R.id.priceEstimated);
         distance=(TextView) itemView.findViewById(R.id.vehicle);
         vehicle=(TextView) itemView.findViewById(R.id.distance);
+        itemView.setTag(itemView);
+        itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
     }
 
     public void setFrom(String from, String countryFrom) {
@@ -51,5 +55,18 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
 
     public void setVehicle(String vehicle) {
         this.vehicle.setText(vehicle);
+    }
+
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
+    }
+    @Override
+    public void onClick(View view) {
+        clickListener.onClick(view, getAdapterPosition(), false);
+    }
+    @Override
+    public boolean onLongClick(View view) {
+        clickListener.onClick(view, getAdapterPosition(), true);
+        return true;
     }
 }
