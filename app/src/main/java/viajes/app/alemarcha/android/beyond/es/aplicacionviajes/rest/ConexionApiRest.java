@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.adapter.TripAdapter;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.dto.AirlinesDTO;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.dto.RoutesDTO;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.dto.TripDTO;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
@@ -116,6 +117,7 @@ public class ConexionApiRest extends AsyncTask<Void, Void, TripDTO> {
     protected void onPostExecute(TripDTO tripDTO) {
         super.onPostExecute(tripDTO);
         trips=new ArrayList<Trip>();
+
         for (RoutesDTO routes: tripDTO.getRoutes()) {
             Trip t=new Trip();
             t.setDuration(routes.getDuration().toString() + " minutos");
@@ -132,8 +134,16 @@ public class ConexionApiRest extends AsyncTask<Void, Void, TripDTO> {
                 t.setFrom("Destino desconocido");
             }
 
+            if(tripDTO.getAirlines()!=null &&  !tripDTO.getAirlines().isEmpty()){
+                AirlinesDTO airline=tripDTO.getAirlines().get((int)Math.random() * tripDTO.getAirlines().size());
+                String urlImg = "http://www.rome2rio.com" + airline.getIconPath();
+                t.setURLImg(urlImg);
+            }
+
             trips.add(t);
         }
+
+
         TripAdapter adapter=new TripAdapter(trips,recyclerViewLista);
         recyclerViewLista.setAdapter(adapter);
     }

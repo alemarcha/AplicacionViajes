@@ -1,19 +1,21 @@
 package viajes.app.alemarcha.android.beyond.es.aplicacionviajes.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.DAO.TripDAO;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.DetailActivity;
+import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.MainActivity;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.R;
 import viajes.app.alemarcha.android.beyond.es.aplicacionviajes.model.Trip;
+
 
 /**
  * Created by alemarcha26 on 30/11/15.
@@ -26,6 +28,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
     public TripAdapter(List<Trip> listTrips, RecyclerView recyclerViewLista) {
         this.listTrips = listTrips;
         this.recyclerViewLista=recyclerViewLista;
+        TripDAO.save(listTrips);
     }
     /**
      * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
@@ -78,17 +81,22 @@ public class TripAdapter extends RecyclerView.Adapter<TripViewHolder> {
     @Override
     public void onBindViewHolder(TripViewHolder holder, int position) {
         // Es el que se utiliza para rellenar el holder
-        Trip tripActual=listTrips.get(position);
+        final Trip tripActual=listTrips.get(position);
         holder.setFrom(tripActual.getFrom(), tripActual.getCountryFrom());
         holder.setTo(tripActual.getTo(), tripActual.getCountryTo());
         holder.setPrice(tripActual.getPrice());
         holder.setDuration(tripActual.getDuration());
         holder.setDistance(tripActual.getDistance());
         holder.setVehicle(tripActual.getVehicle());
+        // Esto lo hacemos con una nueva clase pero realmente no haría falta, se podría hacer directamente View.OnClickListener
         holder.setClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                Toast.makeText(view.getContext(), "#" + position + " - " + listTrips.get(position).getPrice() + " (Long click)", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(view.getContext(), "#" + position + " - " + listTrips.get(position).getPrice() + " (Long click)", Toast.LENGTH_SHORT).show();
+                Intent mensaje = new Intent(view.getContext(), DetailActivity.class);
+                mensaje.putExtra(DetailActivity.POS_ELEMENT_DETAIL,position);
+                mensaje.putExtra(DetailActivity.ELEMENT_DETAIL_IMG,tripActual.getURLImg());
+                view.getContext().startActivity(mensaje);
             }
         });
     }

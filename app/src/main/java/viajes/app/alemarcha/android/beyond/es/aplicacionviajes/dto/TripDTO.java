@@ -19,6 +19,8 @@ public class TripDTO {
     private List<PlacesDTO> places;
     @JsonProperty("routes")
     private List<RoutesDTO> routes;
+    @JsonProperty("airlines")
+    private List<AirlinesDTO> airlines;
 
     public TripDTO() {
     }
@@ -45,5 +47,13 @@ public class TripDTO {
 
     public void setRoutes(List<RoutesDTO> routes) {
         this.routes = routes;
+    }
+
+    public List<AirlinesDTO> getAirlines() {
+        return airlines;
+    }
+
+    public void setAirlines(List<AirlinesDTO> airlines) {
+        this.airlines = airlines;
     }
 }

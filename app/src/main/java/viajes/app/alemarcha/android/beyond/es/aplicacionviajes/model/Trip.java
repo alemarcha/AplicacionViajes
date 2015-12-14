@@ -12,6 +12,7 @@ public class Trip {
     private String duration;
     private String distance;
     private String vehicle;
+    private String URLImg;
 
     public Trip() {
     }
@@ -81,5 +82,13 @@ public class Trip {
 
     public void setVehicle(String vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public String getURLImg() {
+        return URLImg;
+    }
+
+    public void setURLImg(String URLImg) {
+        this.URLImg = URLImg;
     }
 }
